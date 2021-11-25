@@ -21,7 +21,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-@Service("NotesUserDetailsService")
+@Service
 public class NotesUserDetailsServiceImpl implements NotesUserDetailsService {
 
     private NotesUserRepository notesUserRepository;
@@ -69,14 +69,14 @@ public class NotesUserDetailsServiceImpl implements NotesUserDetailsService {
     @Override
     public int createUser(UserDto userDto) {
         NotesUser notesUser = new NotesUser(userDto.getUsername(), passwordEncoder.encode(String.valueOf(userDto.getPassword())));
-        int id = notesUserRepository.save(notesUser).getId();
-        saveAuthorities(notesUser, id);
-        return id;
+        int userId = notesUserRepository.save(notesUser).getId();
+        saveAuthorities(notesUser, userId);
+        return userId;
     }
 
-    private void saveAuthorities(NotesUser notesUser, int id) {
+    private void saveAuthorities(NotesUser notesUser, int userId) {
         Set<Authority> authorities = new HashSet<>();
-        authorities.add(new Authority(id, UserRole.ROLE_USER.name()));
+        authorities.add(new Authority(userId, UserRole.ROLE_USER.name()));
         notesUser.setAuthoritySet(authorities);
 
         authorityRepository.saveAll(authorities);

@@ -18,10 +18,6 @@ public class AuthenticationController {
         this.notesUserDetailsService = notesUserDetailsService;
     }
 
-    AuthenticationController(NotesUserDetailsService notesUserDetailsService) {
-        this.notesUserDetailsService = notesUserDetailsService;
-    }
-
     @PostMapping("/authenticate")
     public ResponseEntity<?> authenticate(@RequestBody UserDto userDto) {
         try {
