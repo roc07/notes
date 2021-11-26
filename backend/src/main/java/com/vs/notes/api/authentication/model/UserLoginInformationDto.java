@@ -13,5 +13,6 @@ public class UserLoginInformationDto {
 
     private String token;
     private String username;
+    private int userId;
 
 }

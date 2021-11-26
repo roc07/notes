@@ -11,7 +11,7 @@ import java.util.List;
 @Service
 public class NotesServiceImpl implements NotesService {
 
-    private NotesRepository notesRepository;
+    private final NotesRepository notesRepository;
 
     @Autowired
     NotesServiceImpl(NotesRepository notesRepository) {

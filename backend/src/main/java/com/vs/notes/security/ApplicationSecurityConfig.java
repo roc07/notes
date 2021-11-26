@@ -40,7 +40,12 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
                 .cors().and()
                 .addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class)
                 .authorizeRequests()
-                .antMatchers("/api/", "/api/prop", "/api/home", "/api/authentication/authenticate", "/api/user/createUser").permitAll()
+                .antMatchers(
+                        "/api/",
+                        "/api/prop",
+                        "/api/home",
+                        "/api/authentication/authenticate",
+                        "/api/user/createUser").permitAll()
                 .anyRequest().fullyAuthenticated();
     }
 

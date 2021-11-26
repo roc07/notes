@@ -95,6 +95,9 @@ public class NotesUserDetailsServiceImpl implements NotesUserDetailsService {
 
         String token = jwtUtil.createToken(username);
 
-        return new UserLoginInformationDto("Bearer " + token, username);
+        return new UserLoginInformationDto(
+                "Bearer " + token,
+                username,
+                notesUserRepository.findNotesUserByUsername(username).getId());
     }
 }
