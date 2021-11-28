@@ -20,6 +20,8 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatButtonModule} from '@angular/material/button';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { UpperToolbarComponent } from './upper-toolbar/upper-toolbar.component';
+import {MatTabsModule} from '@angular/material/tabs';
+import {MatTooltipModule} from "@angular/material/tooltip";
 
 @NgModule({
   declarations: [
@@ -44,7 +46,9 @@ import { UpperToolbarComponent } from './upper-toolbar/upper-toolbar.component';
     MatIconModule,
     MatToolbarModule,
     MatButtonModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    MatTabsModule,
+    MatTooltipModule
   ],
   providers: [],
   bootstrap: [AppComponent]

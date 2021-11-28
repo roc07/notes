@@ -12,5 +12,5 @@ public interface NotesService {
 
     List<NoteDto> getNotesByUserIdAndPage(int page, int size, int userId);
 
-    void deleteNote(int noteId);
+    void deleteNote(int userId, int noteId);
 }

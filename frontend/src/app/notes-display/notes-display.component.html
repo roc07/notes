@@ -1,9 +1,32 @@
-<p>
-  <button class="button-utility" (click)="logout()">Logout</button>
-</p>
-<p>
-  <button class="button-utility" (click)="goToAddNote()">Add Note</button>
-</p>
-<p>
-  <button class="button-utility" (click)="getNotes()">Get Notes</button>
-</p>
+<mat-tab-group dynamicHeight>
+  <ng-container *ngFor="let note of notes">
+    <mat-tab>
+      <div class="note-text">
+        <div class="example-large-box">
+          {{note.noteText}}
+        </div>
+        <div id="work-on-note">
+          <button (click)="deleteNote(note.id)" class="work-button" id="delete-button">
+            Delete
+          </button>
+          <button (click)="editNote(note.id)" class="work-button" id="edit-button">
+            Edit
+          </button>
+        </div>
+      </div>
+      <ng-template mat-tab-label>
+        <label matTooltip="{{note.shortName}}" matTooltipClass="example-tooltip-red1">
+          {{note.id}}
+        </label>
+      </ng-template>
+    </mat-tab>
+  </ng-container>
+</mat-tab-group>
+<button class="basic-button" (click)="goToAddNote()">Add Note</button>
+<button matTooltip="asd">
+  <fa-icon [icon]="faArrowLeft"></fa-icon>
+</button>
+<button>
+  <fa-icon [icon]="faArrowRight"></fa-icon>
+</button>
+

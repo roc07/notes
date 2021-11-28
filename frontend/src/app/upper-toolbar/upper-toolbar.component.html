@@ -1,9 +1,9 @@
 <mat-toolbar>
+  <button class="auth-button" id="sign-out" *ngIf="!signedIn && toolbarService.visible" (click)="signOut()">
+    <fa-icon [icon]="faSignOut" matTooltip="Log out"></fa-icon>
+  </button>
+  <button class="auth-button" id="sign-in" *ngIf="signedIn && toolbarService.visible" (click)="signIn()">
+    <fa-icon [icon]="faSignIn" matTooltip="Log in"></fa-icon>
+  </button>
   <h1>{{toolbarService.welcomeText}}</h1>
-  <button class="auth-button" id="sign-out" *ngIf="signedIn && toolbarService.visible">
-    <fa-icon [icon]="faSignOut"></fa-icon>
-  </button>
-  <button class="auth-button" id="sign-in" *ngIf="!signedIn && toolbarService.visible">
-    <fa-icon [icon]="faSignIn"></fa-icon>
-  </button>
 </mat-toolbar>

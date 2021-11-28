@@ -1,0 +1,44 @@
+.example-small-box, .example-large-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1em;
+}
+.note-text {
+  max-height: 20em;
+  min-width: 15em;
+  max-width: 25em;
+  padding: 0.3em 0.6em 0.6em 0.6em;
+  background: #f2f2f2;
+  color: #514f4f;
+  float: left;
+}
+.basic-button {
+  min-width: 15em;
+  width: 100%;
+}
+.mat-tab-group {
+  align-items: center;
+}
+#work-on-note {
+  float: right;
+}
+.work-button {
+  color: #4e4c4c;
+  border: none;
+  padding: 0.3em;
+  font-weight: bolder;
+}
+#delete-button {
+  background: #cd6666;
+  margin-right: 0.3em;
+}
+#delete-button:hover {
+  background: #d43d3d;
+}
+#edit-button {
+  background: #e9cf89;
+}
+#edit-button:hover {
+  background: #e7c160;
+}

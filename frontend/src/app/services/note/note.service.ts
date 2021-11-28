@@ -32,8 +32,15 @@ export class NoteService {
       .append('userId', `${this.sessionService.getRawUserId()}`)
       .append('page', `${page}`)
       .append('size', `${this.PAGE_SIZE}`);
-    console.log(params)
     const options = {headers: NoteService.prepareHeaders(this.sessionService.getRawToken()), params};
     return this.httpClient.get<NoteDto[]>(`${this.ENDPOINT}/notes/getNotesByUserIdAndPage`, options);
+  }
+
+  public deleteNote(noteId: number): Observable<void> {
+    const params = new HttpParams()
+      .append('userId', `${this.sessionService.getRawUserId()}`)
+      .append('noteId', `${noteId}`);
+    const options = {headers: NoteService.prepareHeaders(this.sessionService.getRawToken()), params};
+    return this.httpClient.delete<void>(`${this.ENDPOINT}/notes/deleteNote`, options);
   }
 }

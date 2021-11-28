@@ -8,8 +8,6 @@ mat-toolbar {
   background: none;
   color: #514f4f;
   font-size: 1.3em;
-  position: absolute;
-  right: -0.01em;
 }
 #sign-out:hover {
   color: firebrick;

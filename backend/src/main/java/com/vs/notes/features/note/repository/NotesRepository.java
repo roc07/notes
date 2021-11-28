@@ -11,4 +11,6 @@ public interface NotesRepository extends JpaRepository<Note, Integer> {
     List<Note> findAllByUserId(int userId);
 
     List<Note> findAllByUserIdOrderByIdDesc(int userId, Pageable pageable);
+
+    Note findByUserIdAndId(int userId, int id);
 }

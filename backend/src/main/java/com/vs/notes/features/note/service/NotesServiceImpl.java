@@ -41,7 +41,8 @@ public class NotesServiceImpl implements NotesService {
     }
 
     @Override
-    public void deleteNote(int noteId) {
-        this.notesRepository.deleteById(noteId);
+    public void deleteNote(int userId, int noteId) {
+        Note noteToDelete = this.notesRepository.findByUserIdAndId(userId, noteId);
+        this.notesRepository.delete(noteToDelete);
     }
 }

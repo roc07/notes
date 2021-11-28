@@ -35,7 +35,7 @@ public class NotesController {
     @Secured("ROLE_USER")
     @GetMapping(path = "/getNotesByUserIdAndPage")
     public ResponseEntity<List<NoteDto>> getNotesByUserIdAndPage(
-            @RequestParam @Min(1) int page,
+            @RequestParam @Min(0) int page,
             @RequestParam @Min(1) int size,
             @RequestParam @Min(1) int userId) {
         List<NoteDto> noteDtoList = notesService.getNotesByUserIdAndPage(page, size, userId);
@@ -44,8 +44,10 @@ public class NotesController {
 
     @Secured("ROLE_USER")
     @DeleteMapping(path = "/deleteNote")
-    public ResponseEntity<Void> deleteNote(@RequestParam int noteId) {
-        notesService.deleteNote(noteId);
+    public ResponseEntity<Void> deleteNote(
+            @RequestParam @Min(1) int userId,
+            @RequestParam @Min(1) int noteId) {
+        notesService.deleteNote(userId, noteId);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 

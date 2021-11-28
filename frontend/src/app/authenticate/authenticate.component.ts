@@ -16,7 +16,6 @@ export class AuthenticateComponent implements OnInit {
 
   hidePassword = true;
   showError = false;
-  token = '';
   loginForm = this.formBuilder.group({
     username: '',
     password: ''

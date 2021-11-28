@@ -38,7 +38,7 @@ export class SessionService {
     return this.query.getValue().username;
   }
 
-  clearFullSession(): void {
+  fullSessionClear(): void {
     this.sessionStore.update( {
       token: null,
       userId: null,
