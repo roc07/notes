@@ -1,0 +1,16 @@
+#text-area-field {
+  width: 18em;
+  height: 20em;
+}
+textarea {
+  width: 18em;
+  height: 20em;
+}
+#short-name-field {
+  width: 18em;
+  margin-bottom: -2em;
+}
+.basic-button {
+  position: relative;
+  margin-bottom: 0.27em;
+}

@@ -1,1 +1,29 @@
-<p>add-note works!</p>
+<h1>Add-a-Note</h1>
+<form [formGroup]="noteForm" (ngSubmit)="addNote()" id="note-form">
+  <p>
+    <mat-form-field appearance="fill" id="short-name-field">
+      <mat-label>Short name</mat-label>
+      <input matInput id="shortName" [formControlName]="'shortName'" maxlength="16"  required>
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-label *ngIf="showShortError" class="error-text">
+      Short name must be between 1 and 16 characters.
+    </mat-label>
+  </p>
+  <p>
+    <mat-form-field appearance="fill" id="text-area-field">
+      <mat-label>Note text</mat-label>
+      <textarea matInput id="noteText" [formControlName]="'noteText'" maxlength="510" required></textarea>
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-label *ngIf="showNoteError" class="error-text">
+      Note text must be between 1 and 510 characters.
+    </mat-label>
+  </p>
+  <button class="basic-button" type="submit">Add note</button>
+</form>
+<p>
+  <button class="basic-button" (click)="goToNotes()" type="button">Notes</button>
+</p>

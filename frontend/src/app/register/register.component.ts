@@ -11,6 +11,8 @@ import {AppPaths} from '../shared/app.paths';
 })
 export class RegisterComponent implements OnInit {
 
+  hidePassword = true;
+  showError = false;
   userRegistrationForm = this.formBuilder.group({
     username: '',
     password: ''
@@ -28,7 +30,7 @@ export class RegisterComponent implements OnInit {
           this.goToAuthentication();
         },
         error => {
-          console.log(error.status);
+          this.showError = true;
         });
   }
 

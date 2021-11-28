@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
+import {NoteService} from '../services/note/note.service';
+import {SessionService} from '../session/state/session.service';
+import {GeneralUtil} from '../services/shared/util/general.util';
 
 @Component({
   selector: 'app-notes-display',
@@ -8,9 +11,12 @@ import {Router} from '@angular/router';
 })
 export class NotesDisplayComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  private generalUtil: GeneralUtil = new GeneralUtil(this.sessionService, this.router);
+
+  constructor(private router: Router, private noteService: NoteService, private sessionService: SessionService) { }
 
   ngOnInit(): void {
+    this.generalUtil.navigateUnregisteredUsersToLoginPage();
   }
 
   logout(): void {
@@ -21,4 +27,7 @@ export class NotesDisplayComponent implements OnInit {
     this.router.navigate(['/add-note']);
   }
 
+  getNotes(): void {
+    this.noteService.getNotesByUserIdAndPage(1).subscribe(r => console.log(r));
+  }
 }

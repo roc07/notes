@@ -13,6 +13,8 @@ import {SessionService} from '../session/state/session.service';
 })
 export class AuthenticateComponent implements OnInit {
 
+  hidePassword = true;
+  showError = false;
   token = '';
   loginForm = this.formBuilder.group({
     username: '',
@@ -30,22 +32,13 @@ export class AuthenticateComponent implements OnInit {
     this.authenticationService
       .authenticate({username: this.loginForm.value.username, password: this.loginForm.value.password})
       .subscribe(result => {
-          console.log(result.userId + ' _ ' + result.token);
-          this.sessionService.createUserStore(result.userId, result.token);
+          this.sessionService.createUserStore(result.userId, result.token, result.username);
           this.router.navigate([AppPaths.notes]);
         },
-        error => console.log(error.status));
+        error => this.showError = true);
   }
 
   goToRegistration(): void {
     this.router.navigate([AppPaths.register]);
   }
-
-  testSecurity(): void {
-    this.homeService.testSecurity(this.token)
-      .subscribe(result =>
-        console.log(result)
-      );
-  }
-
 }

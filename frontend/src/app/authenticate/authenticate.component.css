@@ -1,0 +1,15 @@
+#hide-password {
+  background: none;
+  border: none;
+}
+#hide-password:hover {
+  background: #cacaca;
+  border-radius: 48%;
+  border: none;
+}
+p {
+  margin: 0
+}
+.mat-form-field {
+  width: 18em;
+}

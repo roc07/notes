@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
-import {environment} from "../../../environments/environment";
-import {Observable} from "rxjs";
-import {UserLoginInformationDto} from "../shared/model/user.login.information.dto";
-import {UserDto} from "../shared/model/user.dto";
+import {HttpClient} from '@angular/common/http';
+import {environment} from '../../../environments/environment';
+import {Observable} from 'rxjs';
+import {UserLoginInformationDto} from '../shared/model/user.login.information.dto';
+import {UserDto} from '../shared/model/user.dto';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +15,7 @@ export class AuthenticationService {
   constructor(private httpClient: HttpClient) { }
 
   public authenticate(userDto: UserDto): Observable<UserLoginInformationDto> {
-    console.log("REQUEST EP: " + this.ENDPOINT)
+    console.log('REQUEST EP: ' + this.ENDPOINT);
     return this.httpClient.post<UserLoginInformationDto>(`${this.ENDPOINT}/authenticate`, userDto);
   }
 

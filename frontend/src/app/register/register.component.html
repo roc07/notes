@@ -1,23 +1,63 @@
+<!--<h1>Registration</h1>-->
+<!--<form [formGroup]="userRegistrationForm" (ngSubmit)="register()" id="login-form">-->
+<!--  <p>-->
+<!--    <mat-form-field appearance="fill">-->
+<!--      <mat-label>Username</mat-label>-->
+<!--      <input matInput id="username" [formControlName]="'username'">-->
+<!--    </mat-form-field>-->
+<!--  </p>-->
+<!--  <p>-->
+<!--    <mat-form-field appearance="fill">-->
+<!--      <mat-label>Password</mat-label>-->
+<!--      <input matInput [type]="hidePassword ? 'password' : 'text'" id="password" [formControlName]="'password'">-->
+<!--      <button id="hide-password" type="button" mat-icon-button matSuffix (click)="hidePassword = !hidePassword" [attr.aria-label]="'Hide password'"-->
+<!--              [attr.aria-pressed]="hidePassword">-->
+<!--        <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>-->
+<!--      </button>-->
+<!--    </mat-form-field>-->
+<!--  </p>-->
+<!--  <p>-->
+<!--    <mat-label *ngIf="showError" class="error-text">-->
+<!--      Please enter a valid username (3-20 characters) and a valid password (5-20 characters).-->
+<!--    </mat-label>-->
+<!--  </p>-->
+<!--  <p>-->
+<!--    <button class="basic-button" type="submit">Register</button>-->
+<!--  </p>-->
+<!--</form>-->
+
+<!--<p>-->
+<!--  <button class="basic-button" (click)="goToAuthentication()">Login</button>-->
+<!--</p>-->
+
 <h1>Registration</h1>
 <form [formGroup]="userRegistrationForm" (ngSubmit)="register()" id="login-form">
-  <div>
-    <div>
-      <label>
-        Username
-      </label>
-    </div>
-  </div>
-  <input id="username" [formControlName]="'username'" type="text">
-  <div>
-    <div>
-      <label>
-        Password
-      </label>
-    </div>
-    <input id="password" [formControlName]="'password'" type="password">
-  </div>
-  <button class="button-neutral" type="submit">Register</button>
+  <p>
+    <mat-form-field appearance="fill">
+      <mat-label>Username</mat-label>
+      <input matInput id="username" [formControlName]="'username'">
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field appearance="fill">
+      <mat-label>Password</mat-label>
+      <input matInput [type]="hidePassword ? 'password' : 'text'" id="password" [formControlName]="'password'">
+      <button id="hide-password" type="button" mat-icon-button matSuffix (click)="hidePassword = !hidePassword" [attr.aria-label]="'Hide password'"
+              [attr.aria-pressed]="hidePassword">
+        <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-label *ngIf="showError" class="error-text">
+      Please enter a valid username (3-20 characters) and a valid password (5-20 characters).
+    </mat-label>
+  </p>
+  <p>
+    <button class="basic-button" type="submit">Register</button>
+  </p>
 </form>
+
 <p>
-  <button class="button-utility" (click)="goToAuthentication()">Login</button>
+  <button class="basic-button" (click)="goToAuthentication()">Login</button>
 </p>
