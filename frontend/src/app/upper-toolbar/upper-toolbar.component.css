@@ -1,0 +1,19 @@
+mat-toolbar {
+  background: linear-gradient(45deg, #91b383, wheat);
+  width: 100%;
+  min-width: 14em;
+}
+.auth-button {
+  border: none;
+  background: none;
+  color: #514f4f;
+  font-size: 1.3em;
+  position: absolute;
+  right: -0.01em;
+}
+#sign-out:hover {
+  color: firebrick;
+}
+#sign-in:hover {
+  color: #6d960f;
+}

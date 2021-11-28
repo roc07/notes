@@ -5,6 +5,7 @@ import {Router} from '@angular/router';
 import {FormBuilder} from '@angular/forms';
 import {GeneralUtil} from '../services/shared/util/general.util';
 import {SessionService} from '../session/state/session.service';
+import {ToolbarService} from '../services/toolbar/toolbar.service';
 
 @Component({
   selector: 'app-add-note',
@@ -22,10 +23,12 @@ export class AddNoteComponent implements OnInit {
   private generalUtil: GeneralUtil = new GeneralUtil(this.sessionService, this.router);
 
   constructor(private noteService: NoteService, private router: Router, private formBuilder: FormBuilder,
-              private sessionService: SessionService) { }
+              private sessionService: SessionService, private toolbarService: ToolbarService) { }
 
   ngOnInit(): void {
     this.generalUtil.navigateUnregisteredUsersToLoginPage();
+    this.toolbarService.showToolbar();
+    this.toolbarService.updateWelcomeText(`Add-a-Note`);
   }
 
   addNote(): void {

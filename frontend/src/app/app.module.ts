@@ -16,6 +16,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatIconModule} from '@angular/material/icon';
 import {MatInputModule} from '@angular/material/input';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatButtonModule} from '@angular/material/button';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { UpperToolbarComponent } from './upper-toolbar/upper-toolbar.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +28,8 @@ import {MatInputModule} from '@angular/material/input';
     AuthenticateComponent,
     AddNoteComponent,
     NotesDisplayComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    UpperToolbarComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +41,10 @@ import {MatInputModule} from '@angular/material/input';
     BrowserAnimationsModule,
     MatFormFieldModule,
     MatInputModule,
-    MatIconModule
+    MatIconModule,
+    MatToolbarModule,
+    MatButtonModule,
+    FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

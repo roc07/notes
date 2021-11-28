@@ -3,6 +3,7 @@ import {Router} from '@angular/router';
 import {NoteService} from '../services/note/note.service';
 import {SessionService} from '../session/state/session.service';
 import {GeneralUtil} from '../services/shared/util/general.util';
+import {ToolbarService} from "../services/toolbar/toolbar.service";
 
 @Component({
   selector: 'app-notes-display',
@@ -12,11 +13,13 @@ import {GeneralUtil} from '../services/shared/util/general.util';
 export class NotesDisplayComponent implements OnInit {
 
   private generalUtil: GeneralUtil = new GeneralUtil(this.sessionService, this.router);
-
-  constructor(private router: Router, private noteService: NoteService, private sessionService: SessionService) { }
+  constructor(private router: Router, private noteService: NoteService, private sessionService: SessionService,
+              private toolbarService: ToolbarService) { }
 
   ngOnInit(): void {
     this.generalUtil.navigateUnregisteredUsersToLoginPage();
+    this.toolbarService.showToolbar();
+    this.toolbarService.updateWelcomeText(`Welcome ${this.sessionService.getUsername()}`);
   }
 
   logout(): void {
