@@ -6,5 +6,5 @@ RUN npm run build --configuration=prod
 
 #stage 2
 FROM caddy/caddy:2.4.5-alpine
-COPY --from=node /app/dist/chuck /srv
+COPY --from=node /app/dist/frontend /srv
 EXPOSE 80

@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.vs</groupId>
 	<artifactId>notes</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.1</version>
 	<name>notes</name>
 	<description>Notes Project</description>
 	<properties>
