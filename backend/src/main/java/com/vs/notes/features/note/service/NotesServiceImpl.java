@@ -26,10 +26,10 @@ public class NotesServiceImpl implements NotesService {
         this.notesRepository.save(new Note(userId, noteDto));
     }
 
-//    @Override
-//    public List<Note> getAllNotesForUser(int userId) {
-//        return this.notesRepository.findAllByUserId(userId);
-//    }
+    @Override
+    public long getAllNotesCountForUser(int userId) {
+        return this.notesRepository.countByUserId(userId);
+    }
 
     @Override
     public List<NoteDto> getNotesByUserIdAndPage(int page, int size, int userId) {

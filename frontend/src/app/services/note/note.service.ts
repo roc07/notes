@@ -11,7 +11,6 @@ import {NoteDto} from './model/noteDto';
 export class NoteService {
 
   private ENDPOINT = `${environment.apiUrl}`;
-  private PAGE_SIZE = 4;
 
   constructor(private httpClient: HttpClient, private sessionService: SessionService) { }
 
@@ -27,13 +26,20 @@ export class NoteService {
     return this.httpClient.post<void>(`${this.ENDPOINT}/notes/saveNote`, note, options);
   }
 
-  public getNotesByUserIdAndPage(page: number): Observable<NoteDto[]> {
+  public getNotesByUserIdAndPage(page: number, size: number): Observable<NoteDto[]> {
     const params = new HttpParams()
       .append('userId', `${this.sessionService.getRawUserId()}`)
       .append('page', `${page}`)
-      .append('size', `${this.PAGE_SIZE}`);
+      .append('size', `${size}`);
     const options = {headers: NoteService.prepareHeaders(this.sessionService.getRawToken()), params};
     return this.httpClient.get<NoteDto[]>(`${this.ENDPOINT}/notes/getNotesByUserIdAndPage`, options);
+  }
+
+  public getNotesCountForUser(): Observable<number> {
+    const params = new HttpParams()
+      .append('userId', `${this.sessionService.getRawUserId()}`);
+    const options = {headers: NoteService.prepareHeaders(this.sessionService.getRawToken()), params};
+    return this.httpClient.get<number>(`${this.ENDPOINT}/notes/getNotesCountForUser`, options);
   }
 
   public deleteNote(noteId: number): Observable<void> {

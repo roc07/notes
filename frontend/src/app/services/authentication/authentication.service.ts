@@ -15,7 +15,6 @@ export class AuthenticationService {
   constructor(private httpClient: HttpClient) { }
 
   public authenticate(userDto: UserDto): Observable<UserLoginInformationDto> {
-    console.log('REQUEST EP: ' + this.ENDPOINT);
     return this.httpClient.post<UserLoginInformationDto>(`${this.ENDPOINT}/authenticate`, userDto);
   }
 

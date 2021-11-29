@@ -8,7 +8,7 @@ public interface NotesService {
 
     void saveNote(int userId, NoteDto noteDto);
 
-//    List<Note> getAllNotesForUser(int userId);
+    long getAllNotesCountForUser(int userId);
 
     List<NoteDto> getNotesByUserIdAndPage(int page, int size, int userId);
 

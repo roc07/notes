@@ -12,10 +12,8 @@
   background: #f2f2f2;
   color: #514f4f;
   float: left;
-}
-.basic-button {
-  min-width: 15em;
-  width: 100%;
+  margin: 0.27em;
+  border-bottom: 1px solid #c4c7ca;
 }
 .mat-tab-group {
   align-items: center;
@@ -41,4 +39,17 @@
 }
 #edit-button:hover {
   background: #e7c160;
+}
+.move-button {
+  max-width: 9.45em;
+}
+p {
+  margin: 0;
+}
+.dead-button {
+  background: #838080;
+  max-width: 9.45em;
+  padding: 0.75em;
+  color: #ffffff;
+  margin-bottom: 0.27em;
 }

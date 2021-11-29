@@ -3,7 +3,7 @@ import {FormBuilder} from '@angular/forms';
 import {Router} from '@angular/router';
 import {UserService} from '../services/user/user.service';
 import {AppPaths} from '../shared/app.paths';
-import {ToolbarService} from "../services/toolbar/toolbar.service";
+import {ToolbarService} from '../services/toolbar/toolbar.service';
 
 @Component({
   selector: 'app-register',

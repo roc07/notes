@@ -25,3 +25,6 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   color: #514f4f;
   margin-bottom: 0.27em;
 }
+.centered-base {
+  text-align: center;
+}

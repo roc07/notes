@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface NotesRepository extends JpaRepository<Note, Integer> {
 
-    List<Note> findAllByUserId(int userId);
+    long countByUserId(int userId);
 
     List<Note> findAllByUserIdOrderByIdDesc(int userId, Pageable pageable);
 

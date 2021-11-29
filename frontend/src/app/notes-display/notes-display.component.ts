@@ -5,7 +5,7 @@ import {SessionService} from '../session/state/session.service';
 import {GeneralUtil} from '../services/shared/util/general.util';
 import {ToolbarService} from '../services/toolbar/toolbar.service';
 import {faArrowAltCircleRight, faArrowAltCircleLeft} from '@fortawesome/free-solid-svg-icons';
-import {NoteDto} from "../services/note/model/noteDto";
+import {NoteDto} from '../services/note/model/noteDto';
 
 @Component({
   selector: 'app-notes-display',
@@ -17,9 +17,13 @@ export class NotesDisplayComponent implements OnInit {
   private generalUtil: GeneralUtil = new GeneralUtil(this.sessionService, this.router);
   faArrowRight = faArrowAltCircleRight;
   faArrowLeft = faArrowAltCircleLeft;
+  notes: NoteDto[];
+
   initialPage = 0;
   currentPage = this.initialPage;
-  notes: NoteDto[];
+  currentSize = 4;
+  totalNotesCount = 0;
+  displayNextPage;
 
   constructor(private router: Router, private noteService: NoteService, private sessionService: SessionService,
               private toolbarService: ToolbarService) { }
@@ -29,6 +33,7 @@ export class NotesDisplayComponent implements OnInit {
     this.toolbarService.showToolbar();
     this.toolbarService.updateWelcomeText(`Welcome ${this.sessionService.getUsername()}`);
     this.getNotes();
+    this.preparePageNumbers();
   }
 
   logout(): void {
@@ -40,7 +45,7 @@ export class NotesDisplayComponent implements OnInit {
   }
 
   getNotes(): void {
-    this.noteService.getNotesByUserIdAndPage(this.currentPage)
+    this.noteService.getNotesByUserIdAndPage(this.currentPage, this.currentSize)
       .subscribe(result => this.notes = result);
   }
 
@@ -51,7 +56,31 @@ export class NotesDisplayComponent implements OnInit {
       });
   }
 
-  editNote(noteId: number): void {
+  private preparePageNumbers(): void {
+    this.noteService.getNotesCountForUser()
+      .subscribe(notesCount => {
+        this.totalNotesCount = notesCount;
+        this.displayNextPage = this.calculateDisplayCurrentPage();
+      });
+  }
 
+  private calculateDisplayCurrentPage(): boolean {
+    return (((this.currentPage + 1) * this.currentSize) < this.totalNotesCount);
+  }
+
+  increasePage(): void {
+    if (this.displayNextPage) {
+      this.currentPage++;
+      this.displayNextPage = this.calculateDisplayCurrentPage();
+      this.getNotes();
+    }
+  }
+
+  decreasePage(): void {
+    if (this.currentPage > 0) {
+      this.currentPage--;
+      this.displayNextPage = this.calculateDisplayCurrentPage();
+      this.getNotes();
+    }
   }
 }

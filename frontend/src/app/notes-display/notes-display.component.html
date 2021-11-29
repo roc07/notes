@@ -9,7 +9,7 @@
           <button (click)="deleteNote(note.id)" class="work-button" id="delete-button">
             Delete
           </button>
-          <button (click)="editNote(note.id)" class="work-button" id="edit-button">
+          <button matTooltip="Not implemented" class="work-button" id="edit-button">
             Edit
           </button>
         </div>
@@ -22,11 +22,22 @@
     </mat-tab>
   </ng-container>
 </mat-tab-group>
-<button class="basic-button" (click)="goToAddNote()">Add Note</button>
-<button matTooltip="asd">
-  <fa-icon [icon]="faArrowLeft"></fa-icon>
-</button>
-<button>
-  <fa-icon [icon]="faArrowRight"></fa-icon>
-</button>
+<p>
+  <button class="basic-button" (click)="goToAddNote()">Add Note</button>
+</p>
+<p>
+  <button matTooltip="Previous page"
+          [ngClass]="(this.currentPage > 0) ? 'basic-button move-button' : 'basic-button dead-button'"
+          (click)="decreasePage()"
+  >
+    <fa-icon [icon]="faArrowLeft"></fa-icon>
+  </button>
+  <button matTooltip="Next page"
+          [ngClass]="displayNextPage ? 'basic-button move-button' : 'basic-button dead-button'"
+          class="basic-button move-button"
+          (click)="increasePage()"
+  >
+    <fa-icon [icon]="faArrowRight"></fa-icon>
+  </button>
+</p>
 

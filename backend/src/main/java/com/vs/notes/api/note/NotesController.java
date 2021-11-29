@@ -3,7 +3,6 @@ package com.vs.notes.api.note;
 import com.vs.notes.features.note.dto.NoteDto;
 import com.vs.notes.features.note.service.NotesService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.validation.annotation.Validated;
@@ -29,7 +28,7 @@ public class NotesController {
     @PostMapping(path = "/saveNote")
     public ResponseEntity<Void> saveNote(@RequestParam int userId, @RequestBody NoteDto noteDto) {
         notesService.saveNote(userId, noteDto);
-        return new ResponseEntity<>(HttpStatus.ACCEPTED);
+        return ResponseEntity.accepted().build();
     }
 
     @Secured("ROLE_USER")
@@ -39,7 +38,14 @@ public class NotesController {
             @RequestParam @Min(1) int size,
             @RequestParam @Min(1) int userId) {
         List<NoteDto> noteDtoList = notesService.getNotesByUserIdAndPage(page, size, userId);
-        return new ResponseEntity<>(noteDtoList, HttpStatus.OK);
+        return ResponseEntity.ok(noteDtoList);
+    }
+
+    @Secured("ROLE_USER")
+    @GetMapping(path = "/getNotesCountForUser")
+    public ResponseEntity<Long> getNotesCountForUser(
+            @RequestParam @Min(1) int userId) {
+        return ResponseEntity.ok(notesService.getAllNotesCountForUser(userId));
     }
 
     @Secured("ROLE_USER")
@@ -48,7 +54,6 @@ public class NotesController {
             @RequestParam @Min(1) int userId,
             @RequestParam @Min(1) int noteId) {
         notesService.deleteNote(userId, noteId);
-        return new ResponseEntity<>(HttpStatus.OK);
+        return ResponseEntity.ok().build();
     }
-
 }
