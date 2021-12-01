@@ -18,7 +18,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @Service
@@ -80,11 +79,6 @@ public class NotesUserDetailsServiceImpl implements NotesUserDetailsService {
         notesUser.setAuthoritySet(authorities);
 
         authorityRepository.saveAll(authorities);
-    }
-
-    @Override
-    public List<NotesUser> getAllUsers() {
-        return notesUserRepository.findAll();
     }
 
     @Override
