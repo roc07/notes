@@ -1,4 +1,4 @@
-package com.vs.notes.security.service.util;
+package com.vs.notes.security.service.jwt;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
@@ -13,7 +13,7 @@ import java.util.HashMap;
 import java.util.function.Function;
 
 @Service
-public class JwtUtil {
+public class JwtService {
 
     @Value("${jwt.secret: secretty}")
     private String SECRET_KEY;

@@ -7,7 +7,7 @@ import com.vs.notes.security.model.NotesUser;
 import com.vs.notes.security.model.UserRole;
 import com.vs.notes.security.repository.AuthorityRepository;
 import com.vs.notes.security.repository.NotesUserRepository;
-import com.vs.notes.security.service.util.JwtUtil;
+import com.vs.notes.security.service.jwt.JwtService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -24,7 +24,7 @@ import java.util.Set;
 public class NotesUserDetailsServiceImpl implements NotesUserDetailsService {
 
     private NotesUserRepository notesUserRepository;
-    private JwtUtil jwtUtil;
+    private JwtService jwtService;
     private AuthenticationManager authenticationManager;
     private AuthorityRepository authorityRepository;
     private PasswordEncoder passwordEncoder;
@@ -35,8 +35,8 @@ public class NotesUserDetailsServiceImpl implements NotesUserDetailsService {
     }
 
     @Autowired
-    private void setJwtUtil(JwtUtil jwtUtil) {
-        this.jwtUtil = jwtUtil;
+    private void setJwtService(JwtService jwtService) {
+        this.jwtService = jwtService;
     }
 
     @Autowired
@@ -87,7 +87,7 @@ public class NotesUserDetailsServiceImpl implements NotesUserDetailsService {
         authenticationManager
                 .authenticate(new UsernamePasswordAuthenticationToken(username, String.valueOf(userDto.getPassword())));
 
-        String token = jwtUtil.createToken(username);
+        String token = jwtService.createToken(username);
 
         return new UserLoginInformationDto(
                 "Bearer " + token,

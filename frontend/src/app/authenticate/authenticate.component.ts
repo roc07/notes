@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder} from '@angular/forms';
 import {AuthenticationService} from '../services/authentication/authentication.service';
 import {Router} from '@angular/router';
-import {HomeService} from '../services/home/home.service';
 import {AppPaths} from '../shared/app.paths';
 import {SessionService} from '../session/state/session.service';
 import {ToolbarService} from '../services/toolbar/toolbar.service';
@@ -22,7 +21,7 @@ export class AuthenticateComponent implements OnInit {
   });
 
   constructor(private formBuilder: FormBuilder, private authenticationService: AuthenticationService,
-              private router: Router, private homeService: HomeService, private sessionService: SessionService,
+              private router: Router, private sessionService: SessionService,
               private toolbarService: ToolbarService) { }
 
   ngOnInit(): void {
