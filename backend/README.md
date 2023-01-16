@@ -1,6 +1,6 @@
 # Getting Started
 
-###[Test the application here!](https://kvasen.xyz/)
+###[Test the application here!](https://kvasen.xyz/) (could be unavailable due to domain changes)
 
 ### You can
 * Create a user
